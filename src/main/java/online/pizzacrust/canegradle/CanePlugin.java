@@ -8,5 +8,6 @@ public class CanePlugin implements Plugin<Project> {
     public void apply(Project project) {
         project.getExtensions().add("cane", CaneExt.class);
         project.getTasks().create("setup", SetupTask.class);
+        project.getTasks().create("genmappings", GenMappingsTask.class);
     }
 }

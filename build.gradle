@@ -1,5 +1,40 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+apply plugin: 'maven-publish'
+
 group 'online.pizzacrust'
 version '1.0'
+
+bintray {
+    user = 'pizzacrust'
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'Sugarcane'
+        name = 'CaneGradle'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/SugarcaneMC/CaneGradle.git'
+        version {
+            name  = '1.0'
+            desc = ''
+            released = new Date()
+            vcsTag = '1.0'
+        }
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'online.pizzacrust'
+            artifactId 'CaneGradle'
+            version '1.0'
+        }
+    }
+}
 
 apply plugin: 'java'
 
