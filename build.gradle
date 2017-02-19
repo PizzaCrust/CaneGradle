@@ -13,8 +13,23 @@ repositories {
     }
 }
 
+configurations {
+    shade
+}
+
+jar {
+    from {
+        configurations.shade.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
 dependencies {
     compile gradleApi()
     compile "online.pizzacrust:GraphiteMappings:1.0"
     compile group: 'net.md-5', name: 'SpecialSource', version: '1.7.4'
+
+    shade "online.pizzacrust:GraphiteMappings:1.0"
+    shade group: 'net.md-5', name: 'SpecialSource', version: '1.7.4'
 }
