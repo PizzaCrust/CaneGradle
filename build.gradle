@@ -7,8 +7,14 @@ sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
+    maven {
+        name 'bintray'
+        url 'https://dl.bintray.com/pizzacrust/GraphiteMappings/'
+    }
 }
 
 dependencies {
     compile gradleApi()
+    compile "online.pizzacrust:GraphiteMappings:1.0"
+    compile group: 'net.md-5', name: 'SpecialSource', version: '1.7.4'
 }
